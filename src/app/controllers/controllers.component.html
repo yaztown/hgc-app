@@ -1,0 +1,23 @@
+<h2>Controllers</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row" style="font-weight: bold;">
+        <div class="col-sm-2">Name</div>
+        <div class="col-sm-1">Started</div>
+        <div class="col-sm-1">Manual</div>
+        <div class="col-sm-1">On</div>
+        <div class="col-sm-1">Pin</div>
+        <div class="col-sm"><a href="#" (click)="showInfo = !showInfo">Info</a></div>
+      </div>    
+      <div *ngFor="let controller of controllers" class="row">
+        <div class="col-sm-2">{{controller.name}}</div>
+        <div class="col-sm-1">{{controller.started | booleanSub : "Started:Stopped"}}</div>
+        <div class="col-sm-1">{{controller.manualControl | booleanSub : "Manual:Auto"}}</div>
+        <div class="col-sm-1">{{controller.deviceOn | booleanSub : "On:Off"}}</div>
+        <div class="col-sm-1">[{{controller.relayPin}}]</div>
+        <div class="col-sm"><span *ngIf="showInfo">{{controller.info | json}}</span></div>
+      </div>    
+    </div>
+  </div>
+</div>
