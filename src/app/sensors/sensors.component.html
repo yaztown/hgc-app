@@ -1,3 +1,21 @@
-<p>
-  sensors works!
-</p>
+<h2>Sensors</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="row" style="font-weight: bold;">
+        <div class="col-sm-4">Name</div>
+        <div class="col-sm">Temp (℃)</div>
+        <div class="col-sm">Humidity (rH%)</div>
+        <div class="col-sm">Save Data</div>
+        <div class="col-sm">Pin</div>
+      </div>    
+      <div *ngFor="let sensor of sensors" class="row">
+        <div class="col-sm-4">{{sensor.name}}</div>
+        <div class="col-sm">{{sensor.reading.temperature | number : "1.2-2"}}℃</div>
+        <div class="col-sm">{{sensor.reading.humidity | number : "1.2-2"}}%</div>
+        <div class="col-sm">{{sensor.saveData | booleanSub : "saving:not saving"}}</div>
+        <div class="col-sm">{{sensor.dataPin}}</div>
+      </div>    
+    </div>
+  </div>
+</div>
