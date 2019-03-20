@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HumidityTemperatureSensor } from './sensors/sensors';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 import { Observable, of, throwError } from 'rxjs';
 
@@ -10,7 +11,7 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SensorService {
-  private sensorsUrl = 'http://localhost:8000/api/sensors';  // URL to web api
+  private sensorsUrl = environment.apiUrl + '/api/sensors';  // URL to web api
 
   constructor(
     private http: HttpClient,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DeviceController } from './controllers/controllers';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 import { Observable, of, throwError } from 'rxjs';
 
@@ -10,7 +11,7 @@ import { map, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ControllerService {
-  private controllersUrl = 'http://localhost:8000/api/controllers';
+  private controllersUrl = environment.apiUrl + '/api/controllers';
 
   constructor(
     private http: HttpClient,
