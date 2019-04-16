@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ControllersComponent } from './controllers/controllers.component';
 import { DeviceOnStatusPipe } from './device-on-status.pipe';
 import { BooleanSubPipe } from './boolean-sub.pipe';
+import { TruncatePipe } from './truncate.pipe';
+import { ControllerComponent } from './controller/controller.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { BooleanSubPipe } from './boolean-sub.pipe';
     SensorsComponent,
     ControllersComponent,
     DeviceOnStatusPipe,
-    BooleanSubPipe
+    BooleanSubPipe,
+    TruncatePipe,
+    ControllerComponent
   ],
   imports: [
     BrowserModule,

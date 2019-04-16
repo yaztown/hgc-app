@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-header font-weight-bold">
+    <span>{{controller.name}}</span>
+    <a class="float-right" href="#" (click)="toggleInfo()">{{showInfo ? "Less" : "More"}}</a>
+  </div>
+  <div class="card-body">
+    <div class="row text-center">
+      <div class="col">{{controller.started | booleanSub : "Started:Stopped"}}</div>
+      <div class="col">{{controller.manualControl | booleanSub : "Manual:Auto"}}</div>
+      <div class="col">{{controller.deviceOn | booleanSub : "On:Off"}}</div>
+      <div class="col">[{{controller.relayPin}}]</div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <pre *ngIf="showInfo">{{controller.info | json}}</pre>
+      </div>
+    </div>
+  </div>
+</div>
