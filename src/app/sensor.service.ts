@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HumidityTemperatureSensor } from './sensors/sensors';
+import { HumidityTemperatureSensor } from './sensors';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from '../environments/environment';
 

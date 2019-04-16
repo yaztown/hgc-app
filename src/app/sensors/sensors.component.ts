@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HumidityTemperatureSensor } from './sensors';
+import { HumidityTemperatureSensor } from '../sensors';
 import { SensorService } from '../sensor.service';
+import * as _ from 'lodash';
 
 import { interval } from 'rxjs';
 
@@ -17,7 +18,8 @@ export class SensorsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const timer = interval(1000);
+    this.getSensors();
+    const timer = interval(2000);
     timer.subscribe(() => this.getSensors());
     // this.getSensors();
   }
@@ -25,7 +27,9 @@ export class SensorsComponent implements OnInit {
   getSensors(): void {
     this.sensorService.getSensors()
       .subscribe((sensors) => {
-        this.sensors = sensors;
+        if (!_.isEqual(this.sensors, sensors)) {
+          this.sensors = sensors;
+        }
     });
   }
 }
