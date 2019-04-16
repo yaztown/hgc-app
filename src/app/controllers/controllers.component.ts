@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceController } from './controllers';
+import { DeviceController } from '../controllers';
 import { ControllerService } from '../controller.service';
-
+import * as _ from 'lodash';
 import { interval } from 'rxjs';
 
 @Component({
@@ -11,28 +11,26 @@ import { interval } from 'rxjs';
 })
 export class ControllersComponent implements OnInit {
   controllers: DeviceController[];
-  public showInfo: boolean;
 
   constructor(
     private controllerService: ControllerService
   ) { }
 
   ngOnInit() {
-    const timer = interval(1000);
+    this.getControllers();
+    const timer = interval(5000);
     timer.subscribe(() => {
       this.getControllers();
     });
-    this.showInfo = false;
   }
 
   getControllers() {
     this.controllerService.getControllers()
       .subscribe((controllers) => {
-        this.controllers = controllers;
+        if (!_.isEqual(this.controllers, controllers)) {
+        // if (JSON.stringify(this.controllers) !== JSON.stringify(controllers)) {
+            this.controllers = controllers as DeviceController[];
+        }
       });
-  }
-
-  toggleInfo() {
-    this.showInfo = !this.showInfo;
   }
 }

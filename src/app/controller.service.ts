@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DeviceController } from './controllers/controllers';
+import { DeviceController, DeviceControllerItem } from './controllers';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { environment } from '../environments/environment';
 
@@ -22,10 +22,23 @@ export class ControllerService {
     return this.http.get(this.controllersUrl)
       .pipe(
         map((x: any[]) => {
-          return x.map(y => y.value);
+          return x.map(y => y.value) as DeviceController[];
         }), catchError(error => {
               return throwError('Why here');
         })
       );
   }
+
+  getControllersFull(): Observable<DeviceControllerItem[]> {
+    //
+    return this.http.get(this.controllersUrl)
+      .pipe(
+        map((x: any[]) => {
+          return x.map(y => y.value) as DeviceControllerItem[];
+        }), catchError(error => {
+              return throwError('Why here');
+        })
+      );
+  }
+
 }
