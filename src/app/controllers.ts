@@ -1,3 +1,4 @@
+import { Type } from '@angular/core';
 //
 export class DeviceController {
   loopSleepTime: number;
@@ -12,4 +13,8 @@ export class DeviceController {
   manualControl: boolean;
   deviceOn: boolean;
   info: object;
+}
+
+export class DeviceControllerItem {
+  constructor(public component: Type<any>, _type: string, public data: any) {}
 }
