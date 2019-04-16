@@ -1,6 +1,6 @@
 //
 export class HumidityTemperatureSensor {
-    loopSleepTime: number;
+    loop_sleepTime: number;
     name: string;
     daemon: boolean;
     isAlive: boolean;
