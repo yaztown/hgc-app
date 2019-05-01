@@ -1,6 +1,6 @@
 # HgcApp
 
-This is the web app for [HGC](https://github.com/yaztown/hgc) project.
+This is the web app for the [HGC](https://github.com/yaztown/hgc) project.
 
 ## Installing the requirements
 
