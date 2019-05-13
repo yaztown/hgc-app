@@ -18,15 +18,16 @@ export class ControllerService {
   ) { }
 
   getControllers(): Observable<DeviceController[]> {
+    return this.http.get<DeviceController[]>(this.controllersUrl);
     //
-    return this.http.get(this.controllersUrl)
-      .pipe(
-        map((x: any[]) => {
-          return x.map(y => y.value) as DeviceController[];
-        }), catchError(error => {
-              return throwError('Why here');
-        })
-      );
+    // return this.http.get(this.controllersUrl)
+    //   .pipe(
+    //     map((x: any[]) => {
+    //       return x.map(y => y.value) as DeviceController[];
+    //     }), catchError(error => {
+    //           return throwError('Why here');
+    //     })
+    //   );
   }
 
   getControllersFull(): Observable<DeviceControllerItem[]> {
