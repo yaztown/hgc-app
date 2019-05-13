@@ -18,17 +18,17 @@ export class SensorService {
     ) { }
 
   getSensors(): Observable<HumidityTemperatureSensor[]> {
-    // return this.http.get<HumidityTemperatureSensor[]>(this.sensorsUrl);
-    return this.http.get(this.sensorsUrl)
-      .pipe(
-        map((x: any[]) => {
-          return x.map((y) => {
-            const v = y.value;
-            return v;
-          });
-        }), catchError(error => {
-          return throwError('Something went wrong');
-      })
-    );
+    return this.http.get<HumidityTemperatureSensor[]>(this.sensorsUrl);
+    // return this.http.get(this.sensorsUrl)
+    //   .pipe(
+    //     map((x: any[]) => {
+    //       return x.map((y) => {
+    //         const v = y.value;
+    //         return v;
+    //       });
+    //     }), catchError(error => {
+    //       return throwError('Something went wrong');
+    //   })
+    // );
   }
 }
