@@ -1,21 +1,29 @@
 //
-export class HumidityTemperatureSensor {
-    loop_sleepTime: number;
+export class HumidityTemperatureJSON {
+    loop_sleep_time: number;
     name: string;
     daemon: boolean;
-    isAlive: boolean;
-    started: boolean;
-    exitLoop: boolean;
-    paused: boolean;
-    isStopped: boolean;
-    dataPin: number;
+    is_alive: boolean;
+    _started: boolean;
+    _exit_loop: boolean;
+    _paused: boolean;
+    _is_stopped: boolean;
+    data_pin: number;
     sensor: number;
-    buffMaxlen: number;
-    saveData: boolean;
-    saveDataDir: string;
-    maxAcceptedHumidity: number;
-    minAcceptedHumidity: number;
-    maxAcceptedTemperature: number;
-    minAcceptedTemperature: number;
-    reading: {humidity: number, temperature: number};
+    buff_maxlen: number;
+    save_data: boolean;
+    save_data_dir: string;
+    max_accepted_humidity: number;
+    min_accepted_humidity: number;
+    max_accepted_temperature: number;
+    min_accepted_temperature: number;
+    reading: {
+        humidity: number,
+        temperature: number
+    };
+}
+
+export class HumidityTemperatureSensor {
+    _type: string;
+    value: HumidityTemperatureJSON;
 }
