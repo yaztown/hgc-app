@@ -26,7 +26,7 @@ export class SensorsComponent implements OnInit {
 
   getSensors(): void {
     this.sensorService.getSensors()
-      .subscribe((sensors) => {
+      .subscribe(sensors => {
         if (!_.isEqual(this.sensors, sensors)) {
           this.sensors = sensors;
         }

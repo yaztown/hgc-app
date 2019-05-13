@@ -26,10 +26,10 @@ export class ControllersComponent implements OnInit {
 
   getControllers() {
     this.controllerService.getControllers()
-      .subscribe((controllers) => {
+      .subscribe(controllers => {
         if (!_.isEqual(this.controllers, controllers)) {
         // if (JSON.stringify(this.controllers) !== JSON.stringify(controllers)) {
-            this.controllers = controllers as DeviceController[];
+            this.controllers = controllers; // as DeviceController[];
         }
       });
   }
