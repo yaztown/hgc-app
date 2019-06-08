@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceController } from '../controllers';
+import { ControllerJSON } from '../controllers';
 import { ControllerService } from '../controller.service';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 import { interval } from 'rxjs';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-controllers',
@@ -10,27 +11,31 @@ import { interval } from 'rxjs';
   styleUrls: ['./controllers.component.css']
 })
 export class ControllersComponent implements OnInit {
-  controllers: DeviceController[];
+  controllers: ControllerJSON[];
 
   constructor(
     private controllerService: ControllerService
   ) { }
 
   ngOnInit() {
-    this.getControllers();
+    this.listControllers();
     const timer = interval(5000);
     timer.subscribe(() => {
-      this.getControllers();
+      this.listControllers();
     });
   }
 
-  getControllers() {
-    this.controllerService.getControllers()
+  listControllers(): void {
+    this.controllerService.listControllers()
       .subscribe(controllers => {
-        if (!_.isEqual(this.controllers, controllers)) {
+        // if (!_.isEqual(this.controllers, controllers)) {
         // if (JSON.stringify(this.controllers) !== JSON.stringify(controllers)) {
             this.controllers = controllers; // as DeviceController[];
-        }
+        // }
       });
+  }
+
+  trackByFn(index, obj) {
+    return obj.uuid;
   }
 }

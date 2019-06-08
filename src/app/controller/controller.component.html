@@ -1,18 +1,18 @@
 <div class="card">
   <div class="card-header font-weight-bold">
-    <span>{{controller.value.name}}</span>
+    <span>{{controller.name}}</span>
     <a class="float-right" href="#" (click)="toggleInfo()">{{showInfo ? "Less" : "More"}}</a>
   </div>
   <div class="card-body">
     <div class="row text-center">
       <!-- <div class="col">{{controller.value._started | booleanSub : "Started:Stopped"}}</div> -->
-      <div class="col">{{controller.value.manual_control | booleanSub : "Manual:Auto"}}</div>
-      <div class="col">{{controller.value._device_on | booleanSub : "On:Off"}}</div>
-      <div class="col">[{{controller.value.relay_pin}}]</div>
+      <div class="col">{{controller.manual_control | booleanSub : "Manual:Auto"}}</div>
+      <div class="col">{{controller._controller_on | booleanSub : "On:Off"}}</div>
+      <div class="col">[{{controller.relay_pin}}]</div>
     </div>
     <div class="row">
       <div class="col">
-        <pre *ngIf="showInfo">{{controller.value.info | json}}</pre>
+        <pre *ngIf="showInfo">{{controller.info | json}}</pre>
       </div>
     </div>
   </div>

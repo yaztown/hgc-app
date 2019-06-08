@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HumidityTemperatureSensor } from '../sensors';
+import { HumidityTemperatureJSON } from '../sensors';
 import { SensorService } from '../sensor.service';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
 
 import { interval } from 'rxjs';
 
@@ -11,25 +11,30 @@ import { interval } from 'rxjs';
   styleUrls: ['./sensors.component.css']
 })
 export class SensorsComponent implements OnInit {
-  sensors: HumidityTemperatureSensor[];
+  sensors: HumidityTemperatureJSON[];
 
   constructor(
     private sensorService: SensorService
   ) { }
 
   ngOnInit() {
-    this.getSensors();
+    this.listSensors();
     const timer = interval(2000);
-    timer.subscribe(() => this.getSensors());
+    timer.subscribe(() => this.listSensors());
     // this.getSensors();
   }
 
-  getSensors(): void {
-    this.sensorService.getSensors()
+  listSensors(): void {
+    this.sensorService.listSensors()
       .subscribe(sensors => {
-        if (!_.isEqual(this.sensors, sensors)) {
+        // if (!_.isEqual(this.sensors, sensors)) {
           this.sensors = sensors;
-        }
+        // }
     });
   }
+
+  trackByFn(index, obj) {
+    return obj.uuid;
+  }
+
 }
