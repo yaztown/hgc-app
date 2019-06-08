@@ -1,45 +1,39 @@
 import { Injectable } from '@angular/core';
-import { DeviceController, DeviceControllerItem } from './controllers';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { environment } from '../environments/environment';
-
-import { Observable, of, throwError } from 'rxjs';
-
+import { Controller, ControllerJSON } from './controllers';
+import { HgcRPCService } from './hgc-rpc/hgc-rpc.service';
+import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ControllerService {
-  private controllersUrl = environment.apiUrl + '/api/controllers';
-
   constructor(
-    private http: HttpClient,
+    private hgcRPCService: HgcRPCService
   ) { }
 
-  getControllers(): Observable<DeviceController[]> {
-    return this.http.get<DeviceController[]>(this.controllersUrl);
-    //
-    // return this.http.get(this.controllersUrl)
-    //   .pipe(
-    //     map((x: any[]) => {
-    //       return x.map(y => y.value) as DeviceController[];
-    //     }), catchError(error => {
-    //           return throwError('Why here');
-    //     })
-    //   );
+  listControllers(): Observable<ControllerJSON[]> {
+    const res = this.hgcRPCService.sendRpcRequest('Controller.list_controllers', []);
+    return res.pipe(
+      map((x: Controller[]) => x.map(y => y.value)),
+      catchError(error =>  throwError('Error in method listControllers()'))
+    );
   }
 
-  getControllersFull(): Observable<DeviceControllerItem[]> {
-    //
-    return this.http.get(this.controllersUrl)
-      .pipe(
-        map((x: any[]) => {
-          return x.map(y => y.value) as DeviceControllerItem[];
-        }), catchError(error => {
-              return throwError('Why here');
-        })
-      );
+  getControllersFullInfo(): Observable<Controller[]> {
+    return this.hgcRPCService.sendRpcRequest('Controller.list_controllers', []);
   }
+
+  // getControllersFull(): Observable<DeviceControllerJSON[]> {
+  //   //
+  //   return this.http.get(this.controllersUrl)
+  //     .pipe(
+  //       map((x: any[]) => {
+  //         return x.map(y => y.value) as DeviceControllerJSON[];
+  //       }), catchError(error => {
+  //             return throwError('Why here');
+  //       })
+  //     );
+  // }
 
 }
