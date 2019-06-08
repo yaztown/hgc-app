@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DeviceController } from '../controllers';
+import { ControllerJSON } from '../controllers';
 
 @Component({
   selector: 'app-controller',
@@ -8,7 +8,7 @@ import { DeviceController } from '../controllers';
 })
 export class ControllerComponent implements OnInit {
 
-  @Input() controller: DeviceController;
+  @Input() controller: ControllerJSON;
 
   public showInfo: boolean;
 

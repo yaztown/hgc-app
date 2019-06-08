@@ -1,6 +1,7 @@
 import { Type } from '@angular/core';
 //
-export class DeviceControllerJSON {
+export class ControllerJSON {
+  uuid: string;
   loop_sleep_time: number;
   name: string;
   daemon: boolean;
@@ -11,16 +12,16 @@ export class DeviceControllerJSON {
   _is_stopped: boolean;
   relay_pin: number[];
   manual_control: boolean;
-  _device_on: boolean;
+  _controller_on: boolean;
   info: object;
 }
 
-export class DeviceController {
+export class Controller {
   _type: string;
-  value: DeviceControllerJSON;
+  value: ControllerJSON;
 }
 
 
-export class DeviceControllerItem {
+export class ControllerComponentDataItem {
   constructor(public component: Type<any>, _type: string, public data: any) {}
 }
