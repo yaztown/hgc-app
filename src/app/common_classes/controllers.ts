@@ -20,8 +20,3 @@ export class Controller {
   _type: string;
   value: ControllerJSON;
 }
-
-
-export class ControllerComponentDataItem {
-  constructor(public component: Type<any>, _type: string, public data: any) {}
-}

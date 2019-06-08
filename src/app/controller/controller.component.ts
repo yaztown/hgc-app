@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ControllerJSON } from '../controllers';
+import { Controller } from '../common_classes/controllers';
 
 @Component({
   selector: 'app-controller',
@@ -8,7 +8,7 @@ import { ControllerJSON } from '../controllers';
 })
 export class ControllerComponent implements OnInit {
 
-  @Input() controller: ControllerJSON;
+  @Input() controller: Controller;
 
   public showInfo: boolean;
 

@@ -1,5 +1,5 @@
 //
-export class HumidityTemperatureJSON {
+export class HumidityTemperatureSensorJSON {
     loop_sleep_time: number;
     name: string;
     daemon: boolean;
@@ -25,5 +25,5 @@ export class HumidityTemperatureJSON {
 
 export class HumidityTemperatureSensor {
     _type: string;
-    value: HumidityTemperatureJSON;
+    value: HumidityTemperatureSensorJSON;
 }

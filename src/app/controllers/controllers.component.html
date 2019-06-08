@@ -1,7 +1,7 @@
 <h2>Controllers</h2>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-6" *ngFor="let controller of controllers;trackBy: trackByFn">
+    <div class="col-sm-12 col-md-6 col-lg-6" *ngFor="let controller of controllers;trackBy: trackControllerByUUID">
       <app-controller [controller]="controller"></app-controller>
     </div>
   </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Controller, ControllerJSON } from './controllers';
-import { HgcRPCService } from './hgc-rpc/hgc-rpc.service';
+import { Controller } from '../common_classes/controllers';
+import { HgcRPCService } from '../hgc-rpc/hgc-rpc.service';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
@@ -12,15 +12,7 @@ export class ControllerService {
     private hgcRPCService: HgcRPCService
   ) { }
 
-  listControllers(): Observable<ControllerJSON[]> {
-    const res = this.hgcRPCService.sendRpcRequest('Controller.list_controllers', []);
-    return res.pipe(
-      map((x: Controller[]) => x.map(y => y.value)),
-      catchError(error =>  throwError('Error in method listControllers()'))
-    );
-  }
-
-  getControllersFullInfo(): Observable<Controller[]> {
+  listControllers(): Observable<Controller[]> {
     return this.hgcRPCService.sendRpcRequest('Controller.list_controllers', []);
   }
 

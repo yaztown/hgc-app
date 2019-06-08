@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HumidityTemperatureJSON } from '../sensors';
-import { SensorService } from '../sensor.service';
+import { HumidityTemperatureSensorJSON } from '../common_classes/sensors';
+import { SensorService } from '../services/sensor.service';
 // import * as _ from 'lodash';
 
 import { interval } from 'rxjs';
@@ -11,7 +11,7 @@ import { interval } from 'rxjs';
   styleUrls: ['./sensors.component.css']
 })
 export class SensorsComponent implements OnInit {
-  sensors: HumidityTemperatureJSON[];
+  sensors: HumidityTemperatureSensorJSON[];
 
   constructor(
     private sensorService: SensorService

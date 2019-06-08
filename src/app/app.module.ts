@@ -6,11 +6,10 @@ import { SensorsComponent } from './sensors/sensors.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ControllersComponent } from './controllers/controllers.component';
-import { DeviceOnStatusPipe } from './device-on-status.pipe';
-import { BooleanSubPipe } from './boolean-sub.pipe';
-import { TruncatePipe } from './truncate.pipe';
+import { DeviceOnStatusPipe } from './pipes/device-on-status.pipe';
+import { BooleanSubPipe } from './pipes/boolean-sub.pipe';
+import { TruncatePipe } from './pipes/truncate.pipe';
 import { ControllerComponent } from './controller/controller.component';
-
 
 @NgModule({
   declarations: [

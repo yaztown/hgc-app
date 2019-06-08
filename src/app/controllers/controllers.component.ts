@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ControllerJSON } from '../controllers';
-import { ControllerService } from '../controller.service';
+import { Controller } from '../common_classes/controllers';
+import { ControllerService } from '../services/controller.service';
 // import * as _ from 'lodash';
 import { interval } from 'rxjs';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
@@ -11,7 +11,7 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
   styleUrls: ['./controllers.component.css']
 })
 export class ControllersComponent implements OnInit {
-  controllers: ControllerJSON[];
+  controllers: Controller[];
 
   constructor(
     private controllerService: ControllerService
@@ -27,15 +27,10 @@ export class ControllersComponent implements OnInit {
 
   listControllers(): void {
     this.controllerService.listControllers()
-      .subscribe(controllers => {
-        // if (!_.isEqual(this.controllers, controllers)) {
-        // if (JSON.stringify(this.controllers) !== JSON.stringify(controllers)) {
-            this.controllers = controllers; // as DeviceController[];
-        // }
-      });
+      .subscribe(controllers => this.controllers = controllers);
   }
 
-  trackByFn(index, obj) {
-    return obj.uuid;
+  trackControllerByUUID(index: any, controller: Controller) {
+    return controller.value.uuid;
   }
 }
