@@ -1,5 +1,6 @@
-import { Type } from '@angular/core';
 //
+import { Serializable } from '../ifaces/serializable.iface';
+
 export class ControllerJSON {
   uuid: string;
   loop_sleep_time: number;
@@ -16,7 +17,7 @@ export class ControllerJSON {
   info: object;
 }
 
-export class Controller {
+export class Controller implements Serializable {
   _type: string;
   value: ControllerJSON;
 }
