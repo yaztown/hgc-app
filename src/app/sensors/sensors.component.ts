@@ -11,7 +11,7 @@ import { interval } from 'rxjs';
   styleUrls: ['./sensors.component.css']
 })
 export class SensorsComponent implements OnInit {
-  sensors: HumidityTemperatureSensor[];
+  sensors: HumidityTemperatureSensor[] = [];
 
   constructor(
     private sensorService: SensorService
@@ -33,8 +33,8 @@ export class SensorsComponent implements OnInit {
     });
   }
 
-  trackByFn(index, obj) {
-    return obj.value.uuid;
+  trackSensorByUUID(index, obj) {
+    return obj.uuid;
   }
 
 }
