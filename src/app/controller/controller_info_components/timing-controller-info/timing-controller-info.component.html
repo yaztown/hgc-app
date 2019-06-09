@@ -1,0 +1,10 @@
+<div class="row text-center">
+</div>
+<div class="row text-center">
+    <div class="col">Next On</div>
+    <div class="col">Next Off</div>
+</div>
+<div class="row text-center">
+    <div class="col">{{ info.next_on.value | parseDate | date: "hh:mm:ss a" }}</div>
+    <div class="col">{{ info.next_off.value | parseDate | date: "hh:mm:ss a" }}</div>
+</div>
