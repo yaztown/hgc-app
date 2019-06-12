@@ -12,8 +12,10 @@
     </div>
     <div class="row">
       <div class="col">
-        <ng-template controller-host></ng-template>
-
+        <ng-container *ngxComponentOutlet="
+            controller.component;
+            context: { info: controller.value.info }">
+        </ng-container>
       </div>
     </div>
     <div class="row">
