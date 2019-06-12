@@ -3,6 +3,7 @@ import { Controller } from '../common_classes/controllers';
 import { HgcRPCService } from '../hgc-rpc/hgc-rpc.service';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { controllerInfoComponentMap } from '../common_classes/controller-info-map';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,18 @@ export class ControllerService {
 
   listControllers(): Observable<Controller[]> {
     return this.hgcRPCService.sendRpcRequest('Controller.list_controllers', []);
+  }
+
+  listControllersWithComponent(): Observable<Controller[]> {
+    return this.listControllers()
+      .pipe(
+        map((controllers: Controller[]) => {
+          return controllers.map(ctrl => {
+            ctrl.component = controllerInfoComponentMap[ctrl._type];
+            return ctrl;
+          } );
+        })
+      );
   }
 
   // getControllersFull(): Observable<DeviceControllerJSON[]> {
