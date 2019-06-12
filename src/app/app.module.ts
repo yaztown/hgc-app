@@ -12,8 +12,9 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { ControllerComponent } from './controller/controller.component';
 import { MapValuePipe } from './pipes/map-value.pipe';
 import { ParseDatePipe } from './pipes/parse-date.pipe';
-import { TimingControllerInfoComponent } from './controller/controller_info_components/timing-controller-info/timing-controller-info.component';
+import { TimingControllerInfoComponent } from './controller/controller_info_components/timing-controller-info.component';
 import { ControllerHostDirective } from './directives/controller-host.directive';
+import { NgxdModule } from '@ngxd/core';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ControllerHostDirective } from './directives/controller-host.directive'
   ],
   imports: [
     BrowserModule,
+    NgxdModule,
     HttpClientModule
   ],
   providers: [],
