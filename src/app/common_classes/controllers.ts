@@ -1,4 +1,5 @@
 //
+import { Type } from '@angular/core';
 import { Serializable } from '../ifaces/serializable.iface';
 
 export class ControllerJSON {
@@ -18,6 +19,8 @@ export class ControllerJSON {
 }
 
 export class Controller implements Serializable {
-  _type: string;
-  value: ControllerJSON;
+  constructor(public _type: string, public value: ControllerJSON, public component?: Type<any>) {};
+  // _type: string;
+  // value: ControllerJSON;
+  // component?: Type<any>;
 }
