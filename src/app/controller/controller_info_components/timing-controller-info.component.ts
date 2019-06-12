@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ControllerInfo } from '../../../ifaces/controller-info.iface';
+import { ControllerInfo } from '../../ifaces/controller-info.iface';
 
 @Component({
   selector: 'app-timing-controller-info',
