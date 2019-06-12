@@ -26,7 +26,7 @@ export class ControllersComponent implements OnInit {
   }
 
   listControllers(): void {
-    this.controllerService.listControllers()
+    this.controllerService.listControllersWithComponent()
       .subscribe(controllers => this.controllers = controllers);
   }
 
