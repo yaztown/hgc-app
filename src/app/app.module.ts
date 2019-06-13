@@ -15,6 +15,7 @@ import { ParseDatePipe } from './pipes/parse-date.pipe';
 import { TimingControllerInfoComponent } from './controller/controller_info_components/timing-controller-info.component';
 import { ControllerHostDirective } from './directives/controller-host.directive';
 import { NgxdModule } from '@ngxd/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NgxdModule } from '@ngxd/core';
   imports: [
     BrowserModule,
     NgxdModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   entryComponents: [
