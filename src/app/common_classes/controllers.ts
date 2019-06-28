@@ -20,7 +20,4 @@ export class ControllerJSON {
 
 export class Controller implements Serializable {
   constructor(public _type: string, public value: ControllerJSON, public component?: Type<any>) {};
-  // _type: string;
-  // value: ControllerJSON;
-  // component?: Type<any>;
 }
