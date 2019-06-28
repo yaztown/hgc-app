@@ -29,6 +29,14 @@ export class ControllerService {
       );
   }
 
+  setControllerManual(con_uuid: string): Observable<any> {
+    return this.hgcRPCService.sendRpcRequest('Controller.set_manual', {uuid: con_uuid});
+  }
+
+  setControllerAutomatic(con_uuid: string): Observable<any> {
+    return this.hgcRPCService.sendRpcRequest('Controller.set_automatic', {uuid: con_uuid});
+  }
+
   // getControllersFull(): Observable<DeviceControllerJSON[]> {
   //   //
   //   return this.http.get(this.controllersUrl)

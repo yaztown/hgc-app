@@ -8,7 +8,7 @@
       <!-- <div class="col">{{controller.value._started | booleanSub : "Started:Stopped"}}</div> -->
       <div class="col">{{controller.value.manual_control | booleanSub : "Manual:Auto"}}</div>
       <div class="col">{{controller.value._controller_on | booleanSub : "On:Off"}}</div>
-      <div class="col">[{{controller.value.relay_pin}}]</div>
+      <div class="col"><mat-slide-toggle color="primary" (change)="slideToggleChanged($event)" [checked]="!controller.value.manual_control">{{controller.value.manual_control ? "Manual" : "Auto"}}</mat-slide-toggle></div>
     </div>
     <div class="row">
       <div class="col">
