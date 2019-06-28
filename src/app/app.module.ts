@@ -16,6 +16,7 @@ import { TimingControllerInfoComponent } from './controller/controller_info_comp
 import { ControllerHostDirective } from './directives/controller-host.directive';
 import { NgxdModule } from '@ngxd/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     NgxdModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSlideToggleModule
   ],
   providers: [],
   entryComponents: [
