@@ -17,7 +17,7 @@ export class ControllerComponent {
 
   constructor(private controllerService: ControllerService) { }
 
-  slideToggleChanged(sliderEvent: MatSlideToggleChange) {
+  slideManualAutomaticChanged(sliderEvent: MatSlideToggleChange) {
     //
     const slider: MatSlideToggle = sliderEvent.source;
     this.toggleManualSwitch();
@@ -27,13 +27,38 @@ export class ControllerComponent {
     if (this.controller.value.manual_control) {
       this.controllerService.setControllerAutomatic(this.controller.value.uuid)
       .subscribe((controller: Controller) => {
-        console.log(controller);
+        // console.log(controller);
+        this.controller = controller;
       });
     } else {
       this.controllerService.setControllerManual(this.controller.value.uuid)
         .subscribe((controller: Controller) => {
-          console.log(controller);
+          // console.log(controller);
+          this.controller = controller;
         });
     }
   }
+
+  slideOnOffChanged(sliderEvent: MatSlideToggleChange) {
+    //
+    const slider: MatSlideToggle = sliderEvent.source;
+    this.toggleOnOffSwitch();
+  }
+
+  toggleOnOffSwitch() {
+    if (this.controller.value._controller_on) {
+      this.controllerService.turnOffController(this.controller.value.uuid)
+      .subscribe((controller: Controller) => {
+        // console.log(controller);
+        this.controller = controller;
+      });
+    } else {
+      this.controllerService.turnOnController(this.controller.value.uuid)
+        .subscribe((controller: Controller) => {
+          // console.log(controller);
+          this.controller = controller;
+        });
+    }
+  }
+
 }
