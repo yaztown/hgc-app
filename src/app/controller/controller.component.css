@@ -6,3 +6,7 @@
 .card pre {
   background-color: aliceblue;
 }
+
+.row {
+  margin-top: 3%;
+}
